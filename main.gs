@@ -1,6 +1,8 @@
 // イベント登録
 function createEvent(calendarId, users) {
+  // リクエストIDをランダムに生成
   const requestId = Utilities.formatString("shuffle#%d", Math.random()*100);
+  // イベントの詳細設定
   const detail = {
     summary: 'シャッフルランチ',
     location: 'リモート',
@@ -21,6 +23,7 @@ function createEvent(calendarId, users) {
     },
     attendees: users
   };
+  // イベントの登録
   const event = Calendar.Events.insert(detail, calendarId, { conferenceDataVersion: 1 });
   Logger.log('Event ID: ' + JSON.stringify(event));
 }
