@@ -40,11 +40,12 @@ function shuffle(array){
 // グループ作成
 function createLunchGroups(array) {
   const arrayLen = array.length;
+  // 作成できるグループ数
   const groupNum = Math.floor(arrayLen / 3);
   var result = [];
 
   // グループ数が2つ未満だった場合、グループ分けを行わない
-  if (groupNum == 0 || groupNum == 1) {
+  if (groupNum < 2) {
     result.push(array)
     return result;
   }
