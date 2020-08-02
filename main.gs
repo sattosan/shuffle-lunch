@@ -81,3 +81,20 @@ function createLunchGroups(array) {
   return result;
 }
 
+function myFunc() {
+  // シートオブジェクトを作成
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  // 操作するシートのオブジェクトを取得
+  const sheet = ss.getSheetByName('test');
+  // ユーザのEmailアドレスをシートから取得
+  const emails = sheet.getRange(2, 1, sheet.getLastRow() - 1).getValues();
+  // Calendar API用にフォーマット
+  const formatedEmails = shuffle(emails).map(email => ({'email': email[0]}));
+  // グループの作成
+  const lunchGroups = createLunchGroups(formatedEmails);
+  // 2020入社新卒カレンダーのIDをシートから取得
+  const calendarId = sheet.getRange(2, 2).getValue();
+  // グループごとにイベント登録
+  lunchGroups.map(group => createEvent(calendarId, group));
+  
+}
