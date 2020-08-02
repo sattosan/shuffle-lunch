@@ -81,7 +81,7 @@ function createLunchGroups(array) {
   return result;
 }
 
-function myFunc() {
+function mainProcess() {
   // シートオブジェクトを作成
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   // 操作するシートのオブジェクトを取得
@@ -96,5 +96,4 @@ function myFunc() {
   const calendarId = sheet.getRange(2, 2).getValue();
   // グループごとにイベント登録
   lunchGroups.map(group => createEvent(calendarId, group));
-  
 }
